@@ -5,7 +5,7 @@
       <Header @add="add" />
     </el-header>
     <el-main>
-      <Main @del="del" />
+      <Main @del="del" @update="update" />
     </el-main>
     <el-footer>
       <Footer />
@@ -49,6 +49,11 @@ const add = (val) => {
   });
 };
 
+const update = (id) => {
+  const index = todoList.findIndex((item) => item.id === id);
+  index > -1 && (todoList[index].done = !todoList[index].done);
+};
+
 const del = (id) => {
   todoList.splice(
     todoList.findIndex((item) => item.id === id),
@@ -69,7 +74,7 @@ const del = (id) => {
   align-items: center;
 }
 .el-container {
-  width: 500px;
+  width: 380px;
 
   .el-header {
     display: flex;

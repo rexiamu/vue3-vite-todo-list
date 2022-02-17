@@ -5,7 +5,9 @@ import { computed, inject } from "vue";
 
 const todoList = inject("todoList");
 
-const done = computed(() => todoList.filter((item) => item.done).length);
+const done = computed(
+  () => todoList.filter((item) => item.done === true).length
+);
 const total = computed(() => todoList.length);
 </script>
 
